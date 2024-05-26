@@ -1,0 +1,25 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  color: var(--light-color-text);
+  font-size: 1.5rem;
+  line-height: 2rem;
+  max-width: 65rem;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  font-family: var(--font-family-secondary);
+}
+
+.section h2 {
+  font-size: 2rem;
+  line-height: 4rem;
+  font-weight: bold;
+
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #f9572a, #ffc905);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

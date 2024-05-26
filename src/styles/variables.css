@@ -1,0 +1,26 @@
+:root {
+  /* Fonts */
+  --font-family-main: 'Quicksand', sans-serif;
+  --font-family-secondary: 'Montserrat', sans-serif;
+
+  /* Size screen */
+  --big-desktop-width: 1920px;
+  --desktop-width: 1440px;
+  --tablet-width: 768px;
+  --phone-width: 360px;
+
+  /* Colors */
+  --white: #ffffff;
+  --violet: #a22ff9;
+  --light-violet: #ab3ffd;
+
+  /* Font colors */
+  --light-color-text: #ddd6cb;
+
+  /* Border */
+  --small-radius: 1rem;
+  --medium-radius: 1.5rem;
+  --big-radius: 2rem;
+  /* Animation*/
+  --base-transition: all 0.3s ease;
+}
