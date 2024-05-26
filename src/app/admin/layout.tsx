@@ -1,8 +1,12 @@
 import AdminHeader from '@/components/admin/admin-header/admin-header'
 
 export const metadata = {
-  title: '',
-  description: '',
+  title: 'Admin page',
+  description: 'Administrator',
+  robots: {
+    index: false,
+    follow: false,
+  },
 }
 
 export default function AdminLayout({
