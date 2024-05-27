@@ -15,7 +15,7 @@ export default function MainFooter() {
           priority
           style={{ borderRadius: '50%' }}
         />
-        Streetcatlives
+        Streetcatslives
       </Link>
       <div className={cls.stamp}>
         <p>© 2024 All Rights Reserved.</p>

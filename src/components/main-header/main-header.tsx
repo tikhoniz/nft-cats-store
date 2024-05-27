@@ -19,7 +19,7 @@ export default function MainHeader() {
             priority
             style={{ borderRadius: '50%' }}
           />
-          Streetcatlives
+          Streetcatslives
         </Link>
       </header>
     </>
