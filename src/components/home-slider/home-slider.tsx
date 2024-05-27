@@ -24,15 +24,20 @@ interface CatCardProps {
 
 export const CatCard = ({ cat, className }: CatCardProps) => {
   return (
-    <div className={cls.catCard}>
+    <div
+      className={cls.catCard}
+      style={{
+        backgroundImage: `url(https://nft-cat-images.s3.us-west-1.amazonaws.com/${cat.image})`,
+      }}
+    >
       <span className={cls.cover} />
-      <Image
+      {/* <Image
         // priority
         fill
         sizes="100%"
         src={`https://nft-cat-images.s3.us-west-1.amazonaws.com/${cat.image}`}
         alt={cat.name}
-      />
+      /> */}
       <div className={cls.content}>
         <h3 className={cls.title} data-swiper-parallax="-200">
           {cat.name}
