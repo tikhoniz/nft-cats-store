@@ -27,7 +27,7 @@ export const CatCard = ({ cat, className }: CatCardProps) => {
     <div className={cls.catCard}>
       <span className={cls.cover} />
       <Image
-        priority
+        // priority
         fill
         sizes="100%"
         src={`https://nft-cat-images.s3.us-west-1.amazonaws.com/${cat.image}`}
