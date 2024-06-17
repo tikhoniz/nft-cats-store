@@ -23,3 +23,57 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.wrapper {
+  position: relative;
+  overflow: auto;
+  margin: 2rem 1rem;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+
+.inner {
+  position: relative;
+  width: 2180px;
+  height: 240px;
+  background-color: aliceblue;
+}
+
+.heroImage {
+  position: absolute;
+  object-fit: cover;
+
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    margin: 3rem 1rem;
+  }
+
+  .inner {
+    width: 2880px;
+    height: 320px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .wrapper {
+    margin: 8rem 2rem 5rem 2rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .wrapper {
+    margin: 14rem 2rem 8rem 2rem;
+  }
+}

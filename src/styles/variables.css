@@ -24,3 +24,17 @@
   /* Animation*/
   --base-transition: all 0.3s ease;
 }
+
+/* стилизация scrollbar */
+*::-webkit-scrollbar {
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 100%;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: transparent;
+}

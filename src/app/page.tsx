@@ -1,11 +1,25 @@
 import { HomeSlider } from '@/components/home-slider/home-slider'
 import { getCats } from '@/lib/cats'
+import Image from 'next/image'
 import cls from './page.module.css'
 
 export default async function Home() {
   const cats = await JSON.parse(JSON.stringify(await getCats()))
   return (
     <main>
+      <div className={cls.wrapper}>
+        <div className={cls.inner}>
+          <Image
+            src={'/collection_of_cats.jpg'}
+            alt="Сollection of cats"
+            width={0}
+            height={0}
+            sizes="100vw"
+            priority={true}
+            className={cls.heroImage}
+          />
+        </div>
+      </div>
       <section className={cls.section}>
         <h2>Our mission</h2>
         <p>
@@ -18,6 +32,7 @@ export default async function Home() {
           extraordinary beings through digital storytelling
         </p>
       </section>
+
       <HomeSlider cats={cats} />
     </main>
   )

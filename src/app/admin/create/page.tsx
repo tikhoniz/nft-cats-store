@@ -1,7 +1,8 @@
 import CatsFormSubmit from '@/components/cats/cats-form-submit'
 import ImagePicker from '@/components/cats/image-picker'
-import { createCat } from '@/lib/actions'
+
 import cls from './page.module.css'
+import { createCat } from '@/actions/cats-actions'
 
 export default function createCatPage() {
   return (

@@ -1,8 +1,8 @@
 'use server'
 
+import { saveCat } from '@/lib/cats'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
-import { saveCat } from './cats'
 
 function isInvalidText(text: string | undefined) {
   return !text || text.trim() === ''
