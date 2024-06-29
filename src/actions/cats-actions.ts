@@ -19,6 +19,7 @@ export async function fetchCats() {
 
     return res.json()
   } catch (error) {
+    console.log(error)
     return null
   }
 }

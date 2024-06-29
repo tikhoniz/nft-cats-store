@@ -36,16 +36,14 @@ const CatDetails = () => {
           setCat(data)
         }
       } catch (error) {
-        return null
+        console.error('Error fetching cat: ', error)
       } finally {
         setLoading(false)
       }
     }
 
-    if (cat === null) {
-      fetchCatData()
-    }
-  }, [id, cat])
+    fetchCatData()
+  }, [id])
 
   if (loading) {
     return <Spinner loading={loading} />

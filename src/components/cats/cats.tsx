@@ -48,13 +48,11 @@ const CatItem = ({ item, className }: CatItemProps) => {
 }
 
 const Cats = async () => {
-  const cats: Cat[] = (await fetchCats()) || []
+  const cats: Cat[] = await fetchCats()
 
   return (
     <section className={cls.Cats}>
-      {cats.map((cat) => (
-        <CatItem key={cat.id} item={cat} />
-      ))}
+      {cats && cats.map((cat) => <CatItem key={cat.id} item={cat} />)}
     </section>
   )
 }
