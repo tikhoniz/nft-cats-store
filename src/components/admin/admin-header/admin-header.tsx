@@ -1,4 +1,4 @@
-import NavLink from '@/components/nav-link/nav-link'
+import NavLink from '@/components/navigation/nav-link/nav-link'
 import cls from './admin-header.module.css'
 
 export default function AdminHeader() {

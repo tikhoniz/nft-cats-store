@@ -1,0 +1,53 @@
+.Drawer {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  background-color: var(--background-color);
+  padding: 132px 16px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease-out;
+  transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  -webkit-transition: transform 0.3s ease-out;
+  -moz-transition: transform 0.3s ease-out;
+  -ms-transition: transform 0.3s ease-out;
+  -o-transition: transform 0.3s ease-out;
+}
+
+.open {
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+}
+
+@media screen and (min-width: 768px) {
+  .Drawer {
+    width: 70%;
+    transform: translateX(170%);
+    -webkit-transform: translateX(170%);
+    -moz-transform: translateX(170%);
+    -ms-transform: translateX(170%);
+    -o-transform: translateX(170%);
+  }
+
+  .open {
+    transform: translateX(50%);
+    -webkit-transform: translateX(50%);
+    -moz-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+    -o-transform: translateX(50%);
+
+    & ~ main {
+      filter: blur(10px);
+      -webkit-filter: blur(10px);
+    }
+  }
+}

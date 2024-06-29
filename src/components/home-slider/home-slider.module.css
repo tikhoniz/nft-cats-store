@@ -1,7 +1,7 @@
 .container {
   max-width: var(--desktop-width);
   margin: 0 auto;
-  margin-top: 2rem;
+  margin-top: 6rem;
 }
 
 .swiperContainer {
@@ -37,20 +37,16 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.catCard:hover > img {
   transition-duration: 0.5s;
-  transform: scale(1.05);
-  -webkit-transform: scale(1.05);
-  -moz-transform: scale(1.05);
-  -ms-transform: scale(1.05);
-  -o-transform: scale(1.05);
-}
 
-.catCard img {
-  transition-duration: 0.5s;
-  background: linear-gradient(rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%);
+  &:hover {
+    transition-duration: 0.5s;
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+  }
 }
 
 .content {

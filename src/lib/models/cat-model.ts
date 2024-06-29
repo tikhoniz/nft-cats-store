@@ -5,7 +5,9 @@ const catSchema = new Schema(
     name: { type: String, required: true },
     image: { type: String, required: true },
     history: { type: String, required: true },
-    summary: { type: String, required: true },
+    short_story: { type: String, required: true },
+    nft_link: { type: String, required: true },
+    images: { type: Array },
     slug: { type: String },
   },
   {

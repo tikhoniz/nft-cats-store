@@ -1,5 +1,6 @@
 @import '../styles/reset.css';
 @import '../styles/variables.css';
+@import '../styles/swiper.css';
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Montserrat:wght@400;700&display=swap');
 
@@ -19,6 +20,13 @@ body {
 
 main {
   overflow: hidden;
+}
+
+.page {
+  margin: 0 auto;
+  max-width: var(--big-desktop-width);
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .not-found,
@@ -47,4 +55,18 @@ main {
   font-size: 1.5rem;
   font-weight: 500;
   color: #ddd8d8;
+}
+
+@media (min-width: 768px) {
+  .page {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .page {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
 }

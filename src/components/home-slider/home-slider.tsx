@@ -1,57 +1,46 @@
 'use client'
 
+import { Cat } from '@/types/cats'
+import { useEffect, useState } from 'react'
 import 'swiper/css'
 import 'swiper/css/autoplay'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/parallax'
-import { Swiper, SwiperSlide } from 'swiper/react'
-
-import Image from 'next/image'
 import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import Spinner from '../spinner'
 import cls from './home-slider.module.css'
+import { SliderItem } from './slider-item'
 
-interface HomeSliderProps {
-  className?: string
-  cats?: any[]
-}
+export const HomeSlider = () => {
+  const [cats, setCats] = useState<Cat[] | []>([])
+  const [loading, setLoading] = useState(true)
 
-interface CatCardProps {
-  className?: string
-  cat?: any
-}
+  useEffect(() => {
+    const fetchCatsData = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/cats`, {
+          cache: 'no-store',
+        })
 
-export const CatCard = ({ cat, className }: CatCardProps) => {
-  return (
-    <div
-      className={cls.catCard}
-      style={{
-        backgroundImage: `url(https://nft-cat-images.s3.us-west-1.amazonaws.com/${cat.image})`,
-      }}
-    >
-      <span className={cls.cover} />
-      {/* <Image
-        // priority
-        fill
-        sizes="100%"
-        src={`https://nft-cat-images.s3.us-west-1.amazonaws.com/${cat.image}`}
-        alt={cat.name}
-      /> */}
-      <div className={cls.content}>
-        <h3 className={cls.title} data-swiper-parallax="-200">
-          {cat.name}
-        </h3>
-        <p className={cls.caption} data-swiper-parallax="-100">
-          {cat.summary}
-        </p>
-      </div>
-      <button className={cls.moreBtn}>BUY</button>
-    </div>
-  )
-}
+        if (res.status === 200) {
+          const data = await res.json()
+          setCats(data)
+        }
+      } catch (error) {
+        console.error('Error fetching cats: ', error)
+      } finally {
+        setLoading(false)
+      }
+    }
 
-export const HomeSlider = ({ cats }: HomeSliderProps) => {
+    fetchCatsData()
+  }, [])
+
+  if (loading) return <Spinner loading={loading} />
+
   return (
     <div className={cls.container}>
       <Swiper
@@ -72,7 +61,6 @@ export const HomeSlider = ({ cats }: HomeSliderProps) => {
         }}
         autoplay={{
           delay: 3500,
-          // disableOnInteraction: true,
         }}
         pagination={{ el: '.swiper-pagination', clickable: true }}
         navigation={{
@@ -84,19 +72,9 @@ export const HomeSlider = ({ cats }: HomeSliderProps) => {
       >
         {cats?.map((it) => (
           <SwiperSlide key={it.id} className={cls.swiperSlide}>
-            <CatCard cat={it} />
+            <SliderItem cat={it} />
           </SwiperSlide>
         ))}
-
-        {/* <div className="slider-controler">
-          <div className="swiper-button-prev slider-arrow">
-            <ion-icon name="arrow-back-outline"></ion-icon>
-          </div>
-          <div className="swiper-button-next slider-arrow">
-            <ion-icon name="arrow-forward-outline"></ion-icon>
-          </div>
-          <div className="swiper-pagination"></div>
-        </div> */}
       </Swiper>
     </div>
   )

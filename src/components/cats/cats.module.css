@@ -1,0 +1,108 @@
+.Cats {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 3rem;
+  max-width: var(--big-desktop-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+  margin-top: 1rem;
+}
+
+.CatItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.75rem /* 12px */;
+  -webkit-border-radius: 0.75rem /* 12px */;
+  -moz-border-radius: 0.75rem /* 12px */;
+  -ms-border-radius: 0.75rem /* 12px */;
+  -o-border-radius: 0.75rem /* 12px */;
+
+  background-color: var(--white);
+  box-shadow: 0 2px 5px 0 rgba(251, 251, 251, 0.549),
+    0 2px 10px 0 rgba(255, 255, 255, 0.584);
+  transition: box-shadow 0.25s;
+
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 8px 17px 0 rgba(251, 251, 251, 0.549),
+      0 6px 20px 0 rgba(255, 255, 255, 0.584);
+  }
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 0.75rem /* 12px */;
+  border-top-right-radius: 0.75rem /* 12px */;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 1rem /* 16px */;
+}
+
+.name {
+  font-size: 1.25rem /* 20px */;
+  line-height: 1.75rem /* 28px */;
+  font-weight: 700;
+}
+
+.story {
+  color: var(--gray);
+  margin-bottom: 2rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.button {
+  display: inline-block;
+  height: 36px;
+  /* background-color: #3b82f6; */
+  color: var(--white);
+  padding-left: 1rem /* 16px */;
+  padding-right: 1rem /* 16px */;
+  padding-top: 0.5rem /* 8px */;
+  padding-bottom: 0.5rem /* 8px */;
+  border-radius: 0.5rem /* 8px */;
+  text-align: center;
+  font-size: 0.875rem /* 14px */;
+  line-height: 1.25rem /* 20px */;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.detailsBtn {
+  background-color: #3b82f6;
+}
+
+.buyBtn {
+  background-color: var(--violet);
+}
+
+@media (min-width: 768px) {
+  .Cats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    padding: 0 3rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .Cats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2.5rem;
+    padding: 0 4rem;
+    margin-top: 7rem;
+  }
+}

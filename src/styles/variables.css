@@ -3,16 +3,29 @@
   --font-family-main: 'Quicksand', sans-serif;
   --font-family-secondary: 'Montserrat', sans-serif;
 
+  /* Font size */
+  --font-size-s: 0.75rem;
+  --font-size-m: 1rem;
+  --font-size-l: 1.5rem;
+  --font-size-xl: 2rem;
+  --font-size-xxl: 3rem;
+
   /* Size screen */
   --big-desktop-width: 1920px;
   --desktop-width: 1440px;
+  --small-desktop-width: 900px;
   --tablet-width: 768px;
   --phone-width: 360px;
 
   /* Colors */
   --white: #ffffff;
+  --gray: #4b5563;
+  --brown: #59453c;
   --violet: #a22ff9;
   --light-violet: #ab3ffd;
+
+  /* Background colors */
+  --background-color: #282c34;
 
   /* Font colors */
   --light-color-text: #ddd6cb;

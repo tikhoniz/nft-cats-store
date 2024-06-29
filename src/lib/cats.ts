@@ -14,13 +14,6 @@ const s3 = new S3({
   },
 })
 
-export async function getCats() {
-  await connectDB()
-  let cats = await CatModel.find({})
-
-  return cats
-}
-
 export async function saveCat(cat: any) {
   try {
     const unique = uuid().slice(0, 16)
@@ -30,6 +23,7 @@ export async function saveCat(cat: any) {
     })
 
     cat.history = xss(cat.history)
+    cat.history = xss(cat.short_story)
 
     const extension = cat.image.name.split('.').pop()
     const fileName = `${cat.slug}.${extension}`

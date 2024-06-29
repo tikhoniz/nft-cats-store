@@ -1,10 +1,8 @@
 import { HomeSlider } from '@/components/home-slider/home-slider'
-import { getCats } from '@/lib/cats'
 import Image from 'next/image'
 import cls from './page.module.css'
 
 export default async function Home() {
-  const cats = await JSON.parse(JSON.stringify(await getCats()))
   return (
     <main>
       <div className={cls.wrapper}>
@@ -33,7 +31,7 @@ export default async function Home() {
         </p>
       </section>
 
-      <HomeSlider cats={cats} />
+      <HomeSlider />
     </main>
   )
 }
