@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import Spinner from '../../spinner'
 import { CatDetailsSlider } from '../cat-details-slider/cat-details-slider'
 import cls from './cat-details.module.css'
+import { NFTImage } from './nft-image'
 
 const CatDetails = () => {
   const params = useParams()
@@ -36,14 +37,15 @@ const CatDetails = () => {
           setCat(data)
         }
       } catch (error) {
-        console.error('Error fetching cat: ', error)
+        return null
       } finally {
         setLoading(false)
       }
     }
 
     fetchCatData()
-  }, [id])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   if (loading) {
     return <Spinner loading={loading} />
@@ -51,39 +53,22 @@ const CatDetails = () => {
 
   return (
     <section className={cls.details}>
-      {cat && (
-        <>
-          <div className={cls.portrait}>
-            <Link
-              href={cat?.nft_link || '/'}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <Image
-                src={`https://nft-cat-images.s3.us-west-1.amazonaws.com/${cat?.image}`}
-                alt={cat?.name || ''}
-                width="0"
-                height="0"
-                sizes="100vw"
-                className={cls.image}
-              />
-            </Link>
+      <div className={cls.portrait}>
+        <NFTImage image={cat?.image} link={cat?.nft_link} name={cat?.name} />
 
-            <div className={cls.description}>
-              <h1 className={cls.name}>{cat?.name}</h1>
-              <p className={cls.history}>{cat?.history}</p>
-              <Link
-                href={cat?.nft_link || '/'}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <button className={cls.buyBtn}>Buy now</button>
-              </Link>
-            </div>
-          </div>
-          <CatDetailsSlider images={cat?.images} />
-        </>
-      )}
+        <div className={cls.description}>
+          <h1 className={cls.name}>{cat?.name}</h1>
+          <p className={cls.history}>{cat?.history}</p>
+          <Link
+            href={cat?.nft_link || '/'}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <button className={cls.buyBtn}>Buy now</button>
+          </Link>
+        </div>
+      </div>
+      <CatDetailsSlider images={cat?.images} />
     </section>
   )
 }

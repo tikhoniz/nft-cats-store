@@ -1,0 +1,28 @@
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--big-radius);
+  -webkit-border-radius: var(--big-radius);
+  -moz-border-radius: var(--big-radius);
+  -ms-border-radius: var(--big-radius);
+  -o-border-radius: var(--big-radius);
+}
+
+/* 900px */
+@media (min-width: 900px) {
+  .image {
+    min-width: 400px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .image {
+    min-width: 620px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .image {
+    min-width: 920px;
+  }
+}
