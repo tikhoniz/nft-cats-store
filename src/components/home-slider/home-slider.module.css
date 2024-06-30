@@ -4,7 +4,7 @@
   margin-top: 6rem;
 }
 
-.swiperContainer {
+.homeSwiperContainer {
   height: 20rem;
   padding: 2rem 0;
   position: relative;
@@ -106,7 +106,7 @@
 }
 
 @media (min-width: 768px) {
-  .swiperContainer {
+  .homeSwiperContainer {
     height: 32rem;
   }
 

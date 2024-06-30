@@ -6,32 +6,29 @@ interface CatCardProps {
 }
 
 export const SliderItem = ({ cat }: CatCardProps) => {
+  const { id, image, name, short_story, nft_link } = cat
   return (
     <>
-      <Link href={`/cats/${cat.id}`}>
+      <Link href={`/cats/${id}`}>
         <div
           className={cls.catCard}
           style={{
-            backgroundImage: `url(https://nft-cat-images.s3.us-west-1.amazonaws.com/${cat.image})`,
+            backgroundImage: `url(${image})`,
           }}
         >
           <span className={cls.cover} />
 
           <div className={cls.content}>
             <h3 className={cls.title} data-swiper-parallax="-200">
-              {cat.name}
+              {name}
             </h3>
             <p className={cls.caption} data-swiper-parallax="-100">
-              {cat.short_story}
+              {short_story}
             </p>
           </div>
         </div>
       </Link>
-      <Link
-        href={cat.nft_link || '/'}
-        rel="noopener noreferrer"
-        target="_blank"
-      >
+      <Link href={nft_link || '/'} rel="noopener noreferrer" target="_blank">
         <button className={cls.moreBtn}>BUY</button>
       </Link>
     </>

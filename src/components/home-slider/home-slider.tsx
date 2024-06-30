@@ -68,7 +68,7 @@ export const HomeSlider = () => {
           prevEl: '.swiper-button-prev',
         }}
         modules={[EffectCoverflow, Pagination, Autoplay]}
-        className={cls.swiperContainer}
+        className={cls.homeSwiperContainer}
       >
         {cats?.map((it) => (
           <SwiperSlide key={it.id} className={cls.swiperSlide}>

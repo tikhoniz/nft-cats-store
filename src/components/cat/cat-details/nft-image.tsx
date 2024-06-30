@@ -12,7 +12,7 @@ export const NFTImage = ({ image, link, name }: NFTImageProps) => {
   return (
     <Link href={link || ''} rel="noopener noreferrer" target="_blank">
       <Image
-        src={`https://nft-cat-images.s3.us-west-1.amazonaws.com/${image}`}
+        src={image || ''}
         alt={name || ''}
         width="0"
         height="0"

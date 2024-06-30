@@ -11,11 +11,12 @@ interface CatItemProps {
 }
 
 const CatItem = ({ item, className }: CatItemProps) => {
+  const { image, name, short_story, nft_link, id } = item
   return (
     <div className={cls.CatItem}>
       <Link href={`/cats/${item.id}`}>
         <Image
-          src={`https://nft-cat-images.s3.us-west-1.amazonaws.com/${item.image}`}
+          src={image}
           alt={item.name}
           width="0"
           height="0"
@@ -24,11 +25,11 @@ const CatItem = ({ item, className }: CatItemProps) => {
         />
       </Link>
       <div className={cls.content}>
-        <h3 className={cls.name}>{item.name}</h3>
-        <p className={cls.story}>{item.short_story}</p>
+        <h3 className={cls.name}>{name}</h3>
+        <p className={cls.story}>{short_story}</p>
         <div className={cls.actions}>
           <Link
-            href={item.nft_link}
+            href={nft_link}
             rel="noopener noreferrer"
             target="_blank"
             className={classNames(cls.button, {}, [className, cls.buyBtn])}
@@ -36,7 +37,7 @@ const CatItem = ({ item, className }: CatItemProps) => {
             Buy
           </Link>
           <Link
-            href={`/cats/${item.id}`}
+            href={`/cats/${id}`}
             className={classNames(cls.button, {}, [className, cls.detailsBtn])}
           >
             Details
