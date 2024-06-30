@@ -81,7 +81,7 @@ export const CatDetailsSlider = ({
         {images?.map((it) => (
           <SwiperSlide key={it} className={cls.swiperSlide}>
             <Image
-              src={`https://res.cloudinary.com/tikhon-dev/image/upload/v1719656257/nft-cats/${it}`}
+              src={it}
               alt={''}
               width="0"
               height="0"
