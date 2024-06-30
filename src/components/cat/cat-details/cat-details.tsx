@@ -51,34 +51,39 @@ const CatDetails = () => {
 
   return (
     <section className={cls.details}>
-      <div className={cls.portrait}>
-        <Link
-          href={cat?.nft_link || '/'}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <Image
-            src={`https://nft-cat-images.s3.us-west-1.amazonaws.com/${cat?.image}`}
-            alt={cat?.name || ''}
-            width="0"
-            height="0"
-            sizes="100vw"
-            className={cls.image}
-          />
-        </Link>
-        <div className={cls.description}>
-          <h1 className={cls.name}>{cat?.name}</h1>
-          <p className={cls.history}>{cat?.history}</p>
-          <Link
-            href={cat?.nft_link || '/'}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <button className={cls.buyBtn}>Buy now</button>
-          </Link>
-        </div>
-      </div>
-      <CatDetailsSlider images={cat?.images} />
+      {cat && (
+        <>
+          <div className={cls.portrait}>
+            <Link
+              href={cat?.nft_link || '/'}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <Image
+                src={`https://nft-cat-images.s3.us-west-1.amazonaws.com/${cat?.image}`}
+                alt={cat?.name || ''}
+                width="0"
+                height="0"
+                sizes="100vw"
+                className={cls.image}
+              />
+            </Link>
+
+            <div className={cls.description}>
+              <h1 className={cls.name}>{cat?.name}</h1>
+              <p className={cls.history}>{cat?.history}</p>
+              <Link
+                href={cat?.nft_link || '/'}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <button className={cls.buyBtn}>Buy now</button>
+              </Link>
+            </div>
+          </div>
+          <CatDetailsSlider images={cat?.images} />
+        </>
+      )}
     </section>
   )
 }
