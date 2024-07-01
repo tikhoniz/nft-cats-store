@@ -2,15 +2,9 @@
 
 import Image from 'next/image'
 import { useRef, useState } from 'react'
-import cls from './image-picker.module.css'
+import cls from './nft-picker.module.css'
 
-export default function ImagePicker({
-  label,
-  name,
-}: {
-  label: string
-  name: string
-}) {
+export function NFTPicker({ label, name }: { label: string; name: string }) {
   const [pickedImage, setPickedImage] = useState<string | null>(null)
 
   const imageInputRef = useRef<HTMLInputElement | null>(null)

@@ -1,7 +1,14 @@
 'use client'
 
-export default function CatsFormSubmit() {
-  // const { pending } = useFormStatus()
+import { useFormStatus } from 'react-dom'
+import Spinner from '../spinner'
 
-  return <button type="submit">Create cat</button>
+export default function CatsFormSubmit() {
+  const { pending } = useFormStatus()
+
+  return (
+    <button type="submit" disabled={pending}>
+      {pending ? <Spinner loading={pending} /> : 'Create cat'}
+    </button>
+  )
 }
