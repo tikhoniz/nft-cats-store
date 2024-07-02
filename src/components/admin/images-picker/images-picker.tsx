@@ -4,7 +4,12 @@ import Image from 'next/image'
 import { useRef, useState } from 'react'
 import cls from './images-picker.module.css'
 
-export function ImagesPicker({ label, name }: { label: string; name: string }) {
+interface ImagesPickerProps {
+  label: string
+  name: string
+}
+
+export const ImagesPicker = ({ label, name }: ImagesPickerProps) => {
   const [pickedImages, setPickedImages] = useState<string[]>([])
 
   const imageInputRef = useRef<HTMLInputElement | null>(null)
