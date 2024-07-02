@@ -1,6 +1,6 @@
 import MainFooter from '@/components/main-footer/main-footer'
-import MainHeader from '@/components/main-header/main-header'
 import './globals.css'
+import { MainHeader } from '@/components/main-header/main-header'
 
 export const metadata = {
   title: 'Street Cats Lives',

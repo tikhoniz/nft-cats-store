@@ -1,4 +1,3 @@
-import { fetchCats } from '@/actions/cats-actions'
 import { classNames } from '@/lib/classNames/classNames'
 import { Cat } from '@/types/cats'
 import Image from 'next/image'
@@ -48,14 +47,12 @@ const CatItem = ({ item, className }: CatItemProps) => {
   )
 }
 
-const Cats = async () => {
-  const cats: Cat[] = await fetchCats()
-
+export const Cats = ({ cats }: { cats: Cat[] }) => {
   return (
     <section className={cls.Cats}>
-      {cats && cats.map((cat) => <CatItem key={cat.id} item={cat} />)}
+      {cats.map((cat) => (
+        <CatItem key={cat.id} item={cat} />
+      ))}
     </section>
   )
 }
-
-export default Cats

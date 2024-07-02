@@ -1,10 +1,10 @@
-import type { ReactNode, JSX } from 'react'
+import type { JSX, ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 
 interface PortalProps {
-  // то что телепортируется
+  // something that teleports
   children: ReactNode
-  // куда телепортируем
+  // where to teleport
   element?: HTMLElement
 }
 

@@ -5,11 +5,6 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'nft-cat-images.s3.us-west-1.amazonaws.com',
-        pathname: '**',
-      },
-      {
-        protocol: 'https',
         hostname: 'res.cloudinary.com',
         pathname: '**',
       },

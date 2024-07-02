@@ -10,11 +10,11 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import cls from './cat-details-slider.module.css'
 
-export const CatDetailsSlider = ({
-  images,
-}: {
+interface CatDetailsSliderProps {
   images: string[] | undefined
-}) => {
+}
+
+export const CatDetailsSlider = ({ images }: CatDetailsSliderProps) => {
   return (
     <div className={cls.container}>
       <Swiper

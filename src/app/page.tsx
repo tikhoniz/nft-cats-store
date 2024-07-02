@@ -1,8 +1,11 @@
 import { HomeSlider } from '@/components/home-slider/home-slider'
 import Image from 'next/image'
 import cls from './page.module.css'
+import { fetchCats } from '@/actions/cats-actions'
 
 export default async function Home() {
+  const cats = await fetchCats()
+
   return (
     <main>
       <div className={cls.wrapper}>
@@ -31,7 +34,7 @@ export default async function Home() {
         </p>
       </section>
 
-      <HomeSlider />
+      <HomeSlider cats={cats} />
     </main>
   )
 }
