@@ -14,11 +14,13 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 }
 
 const CatDetailsPage = async ({ params }: { params: { id: string } }) => {
-  // const cat = await fetchCat(params.id);
+  const cat = await fetchCat(params.id);
 
-  console.log('id', params.id);
-
-  return <main className="page">{/* <CatDetails cat={cat} /> */}</main>;
+  return (
+    <main className="page">
+      <CatDetails cat={cat} />
+    </main>
+  );
 };
 
 export default CatDetailsPage;
