@@ -1,14 +1,49 @@
 import MainFooter from '@/components/main-footer/main-footer'
-import './globals.css'
 import { MainHeader } from '@/components/main-header/main-header'
+import { SITE_DESCRIPTION, SITE_NAME } from '@/constant/seo.const'
+import { Metadata } from 'next'
+import './globals.css'
 
-export const metadata = {
-  title: 'Street Cats Lives',
-  description:
-    'Discover a collection of heartwarming NFTs showcasing the resilience of remarkable cats. From overcoming adversity to embracing second chances, each artwork captures the indomitable spirit of these feline companions. By acquiring these NFTs, you not only add captivating art to your collection but also support initiatives to aid animals in need. Join us in celebrating the strength and resilience of these extraordinary beings through digital storytelling',
+export const metadata: Metadata = {
+  title: {
+    absolute: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
 
   icons: {
+    shortcut: '/icon.png',
     icon: '/icon.png',
+    apple: '/touch-icons/256x256.png', // для PWA
+    other: [
+      {
+        rel: 'touch-icons',
+        url: '/touch-icons/256x256.png',
+        sizes: '256x256',
+        type: 'image/png',
+      },
+    ],
+  },
+  openGraph: {
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    url: process.env.NEXT_PUBLIC_DOMAIN,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: process.env.NEXT_PUBLIC_DOMAIN,
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_DOMAIN}/touch-icons/256x256.png`,
+        width: 256,
+        height: 256,
+        alt: SITE_NAME,
+      },
+    ],
   },
 }
 

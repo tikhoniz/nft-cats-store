@@ -1,50 +1,40 @@
-import cloudinary from '@/lib/config/cloudinary'
-import { revalidatePath } from 'next/cache'
-import { redirect } from 'next/navigation'
-import slugify from 'slugify'
-import { v4 as uuid } from 'uuid'
-import xss from 'xss'
+import cloudinary from '@/lib/config/cloudinary';
+import { redirect } from 'next/navigation';
 
-const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null
+const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
 
 function isInvalidText(text: string | undefined) {
-  return !text || text.trim() === ''
+  return !text || text.trim() === '';
 }
 
 export async function fetchCats() {
-  try {
-    const res = await fetch(`${apiDomain}/cats`, {
-      cache: 'no-store',
-    })
-    if (!res.ok) {
-      throw Error('Failed to fetch data')
-    }
+  'use server';
 
-    return res.json()
-  } catch (error) {
-    console.log(error)
-    return null
+  const res = await fetch(`${apiDomain}/cats`, {
+    cache: 'no-store',
+  });
+
+  if (!res.ok) {
+    throw Error('Failed to fetch data');
   }
+
+  return res.json();
 }
 
 export async function fetchCat(id: string) {
-  try {
-    const res = await fetch(`${apiDomain}/cats/${id}`, {
-      cache: 'no-store',
-    })
+  'use server';
 
-    if (!res.ok) {
-      throw Error('Failed to fetch data')
-    }
+  const res = await fetch(`${apiDomain}/cats/${id}`, { cache: 'no-store' });
 
-    return res.json()
-  } catch (error) {
-    return null
+  if (!res.ok) {
+    throw Error('Failed to fetch data');
   }
+
+  return res.json();
 }
 
 export async function createCat(formData: FormData) {
-  'use server'
+  'use server';
 
   const cat = {
     name: formData.get('name')?.toString(),
@@ -53,7 +43,7 @@ export async function createCat(formData: FormData) {
     nft_link: formData.get('nft_link')?.toString(),
     image: formData.get('image'),
     images: formData.getAll('images'),
-  }
+  };
 
   if (
     isInvalidText(cat.name) ||
@@ -62,17 +52,17 @@ export async function createCat(formData: FormData) {
     isInvalidText(cat.nft_link) ||
     !cat.image
   ) {
-    throw new Error()
+    throw new Error();
   }
 
   try {
     // @ts-ignore
-    const imageBuffer = await cat.image.arrayBuffer()
-    const imageArray = Array.from(new Uint8Array(imageBuffer))
-    const imageData = Buffer.from(imageArray)
+    const imageBuffer = await cat.image.arrayBuffer();
+    const imageArray = Array.from(new Uint8Array(imageBuffer));
+    const imageData = Buffer.from(imageArray);
 
     // Convert the image data to base64
-    const imageBase64 = imageData.toString('base64')
+    const imageBase64 = imageData.toString('base64');
 
     // Upload the one image data as a base64 string to Cloudinary
     const result = await cloudinary.uploader.upload(
@@ -80,22 +70,22 @@ export async function createCat(formData: FormData) {
       {
         folder: 'nft-cats/nft',
       },
-    )
-    cat.image = result.secure_url
+    );
+    cat.image = result.secure_url;
 
     // Upload the one image data as a base64 string to Cloudinary
     // Access the uploaded files from the form data
-    const imageUploadPromises = []
+    const imageUploadPromises = [];
 
     for (const image of cat.images) {
       // Assuming image is a File object, extract the file data
       // @ts-ignore
-      const imageBuffer = await image.arrayBuffer()
-      const imageArray = Array.from(new Uint8Array(imageBuffer))
-      const imageData = Buffer.from(imageArray)
+      const imageBuffer = await image.arrayBuffer();
+      const imageArray = Array.from(new Uint8Array(imageBuffer));
+      const imageData = Buffer.from(imageArray);
 
       // Convert the image data to base64
-      const imageBase64 = imageData.toString('base64')
+      const imageBase64 = imageData.toString('base64');
 
       // Upload the image data as a base64 string to Cloudinary
       const result = await cloudinary.uploader.upload(
@@ -103,63 +93,31 @@ export async function createCat(formData: FormData) {
         {
           folder: `nft-cats/${cat.name}`,
         },
-      )
+      );
 
-      imageUploadPromises.push(result.secure_url)
+      imageUploadPromises.push(result.secure_url);
     }
 
     // Wait for all image uploads to complete
-    const uploadedImages = await Promise.all(imageUploadPromises)
+    const uploadedImages = await Promise.all(imageUploadPromises);
 
     // Add the uploaded images to the Cat object
-    cat.images = uploadedImages
-
-    const res = await fetch(`${apiDomain}/cats/create`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ catData: cat }),
-    })
-    if (!res.ok) {
-      throw Error('Failed to create a cat')
-    }
-
-    revalidatePath('/', 'page')
-    redirect('/admin')
+    cat.images = uploadedImages;
   } catch (error) {
-    return null
+    console.log('error', error);
   }
-}
 
-export async function saveCat(cat: any) {
-  try {
-    const unique = uuid().slice(0, 16)
-    cat.slug = slugify(`${cat.name} ${unique}`, {
-      lower: true,
-      replacement: '_',
-    })
+  const res = await fetch(`${apiDomain}/cats/create`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ catData: cat }),
+  });
 
-    cat.history = xss(cat.history)
-    cat.history = xss(cat.short_story)
-
-    const extension = cat.image.name.split('.').pop()
-    const fileName = `${cat.slug}.${extension}`
-
-    const bufferedImage = await cat.image.arrayBuffer()
-
-    // s3.putObject({
-    //   Bucket: 'nft-cat-images',
-    //   Key: fileName,
-    //   Body: Buffer.from(bufferedImage),
-    //   ContentType: cat.image.type,
-    // })
-
-    // cat.image = fileName
-
-    // await connectDB()
-    // await CatModel.create(cat)
-  } catch (error) {
-    return 'error'
+  if (!res.ok) {
+    throw Error('Failed to create a cat');
   }
+
+  redirect('/admin');
 }

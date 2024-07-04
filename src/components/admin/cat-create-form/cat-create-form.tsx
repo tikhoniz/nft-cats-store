@@ -1,8 +1,8 @@
-import { createCat } from '@/actions/cats-actions'
-import CatsFormSubmit from '@/components/cats/cats-form-submit'
-import { ImagesPicker } from '../images-picker/images-picker'
-import { NFTPicker } from '../nft-picker/nft-picker'
-import cls from './cat-create-form.module.css'
+import { createCat } from '@/actions/cats-actions';
+import CatsFormSubmit from '@/components/cats/cats-form-submit';
+import { ImagesPicker } from '../images-picker/images-picker';
+import { NFTPicker } from '../nft-picker/nft-picker';
+import cls from './cat-create-form.module.css';
 
 export const CatCreateForm = () => {
   return (
@@ -31,5 +31,5 @@ export const CatCreateForm = () => {
         <CatsFormSubmit />
       </p>
     </form>
-  )
-}
+  );
+};
