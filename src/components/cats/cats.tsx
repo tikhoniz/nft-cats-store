@@ -1,16 +1,16 @@
-import { classNames } from '@/lib/classNames/classNames'
-import { Cat } from '@/types/cats'
-import Image from 'next/image'
-import Link from 'next/link'
-import cls from './cats.module.css'
+import { classNames } from '@/lib/classNames/classNames';
+import { Cat } from '@/types/cats';
+import Image from 'next/image';
+import Link from 'next/link';
+import cls from './cats.module.css';
 
 interface CatItemProps {
-  item: Cat
-  className?: string
+  item: Cat;
+  className?: string;
 }
 
 const CatItem = ({ item, className }: CatItemProps) => {
-  const { image, name, short_story, nft_link, id } = item
+  const { image, name, short_story, nft_link, id } = item;
   return (
     <div className={cls.CatItem}>
       <Link href={`/cats/${item.id}`}>
@@ -21,6 +21,7 @@ const CatItem = ({ item, className }: CatItemProps) => {
           height="0"
           sizes="100vw"
           className={cls.image}
+          priority={true}
         />
       </Link>
       <div className={cls.content}>
@@ -44,8 +45,8 @@ const CatItem = ({ item, className }: CatItemProps) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const Cats = ({ cats }: { cats: Cat[] }) => {
   return (
@@ -54,5 +55,5 @@ export const Cats = ({ cats }: { cats: Cat[] }) => {
         <CatItem key={cat.id} item={cat} />
       ))}
     </section>
-  )
-}
+  );
+};

@@ -12,17 +12,12 @@ export const GET = async (
 
     const { id: catId } = params;
 
-    const cat = await CatModel.findOne({ _id: catId });
-
-    if (!cat) {
-      return new Response('Cat not found', { status: 404 });
-    }
+    const cat = await CatModel.findById({ _id: catId });
 
     return new Response(JSON.stringify(cat), {
       status: 200,
     });
   } catch (error) {
-    console.log(error);
     return new Response('Something Went Wrong', { status: 500 });
   }
 };

@@ -1,5 +1,5 @@
 import cloudinary from '@/lib/config/cloudinary';
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 
 const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
 
@@ -7,30 +7,32 @@ function isInvalidText(text: string | undefined) {
   return !text || text.trim() === '';
 }
 
-export async function fetchCats() {
-  'use server';
-
-  const res = await fetch(`${apiDomain}/cats`, {
-    cache: 'no-store',
-  });
-
-  if (!res.ok) {
-    throw Error('Failed to fetch data');
-  }
-
-  return res.json();
-}
-
 export async function fetchCat(id: string) {
   'use server';
 
-  const res = await fetch(`${apiDomain}/cats/${id}`, { cache: 'no-store' });
+  const response = await fetch(`${apiDomain}/cats/${id}`, {
+    cache: 'no-store',
+  });
 
-  if (!res.ok) {
-    throw Error('Failed to fetch data');
+  if (!response.ok) {
+    notFound();
   }
 
-  return res.json();
+  return response.json();
+}
+
+export async function fetchCats() {
+  'use server';
+
+  const response = await fetch(`${apiDomain}/cats`, {
+    cache: 'no-store',
+  });
+
+  if (!response.ok) {
+    notFound();
+  }
+
+  return response.json();
 }
 
 export async function createCat(formData: FormData) {
@@ -107,7 +109,7 @@ export async function createCat(formData: FormData) {
     console.log('error', error);
   }
 
-  const res = await fetch(`${apiDomain}/cats/create`, {
+  const response = await fetch(`${apiDomain}/cats/create`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -115,7 +117,7 @@ export async function createCat(formData: FormData) {
     body: JSON.stringify({ catData: cat }),
   });
 
-  if (!res.ok) {
+  if (!response.ok) {
     throw Error('Failed to create a cat');
   }
 

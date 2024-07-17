@@ -10,6 +10,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   if (!cat) {
     notFound();
   }
+
   return { title: cat.name, description: cat.short_story };
 }
 

@@ -1,15 +1,16 @@
-import { HomeSlider } from '@/components/home-slider/home-slider'
-import Image from 'next/image'
-import cls from './page.module.css'
-import { fetchCats } from '@/actions/cats-actions'
+import { fetchCats } from '@/actions/cats-actions';
+import { CatsSlider } from '@/components/cats-slider/cats-slider';
+import { HomeSlider } from '@/components/home-slider/home-slider';
+import cls from './page.module.css';
 
 export default async function Home() {
-  const cats = await fetchCats()
+  const cats = await fetchCats();
 
   return (
     <main>
       <div className={cls.wrapper}>
-        <div className={cls.inner}>
+        <CatsSlider />
+        {/* <div className={cls.inner}>
           <Image
             src={'/collection_of_cats.jpg'}
             alt="Сollection of cats"
@@ -19,7 +20,7 @@ export default async function Home() {
             priority={true}
             className={cls.heroImage}
           />
-        </div>
+        </div> */}
       </div>
       <section className={cls.section}>
         <h2>Our mission</h2>
@@ -36,5 +37,5 @@ export default async function Home() {
 
       <HomeSlider cats={cats} />
     </main>
-  )
+  );
 }

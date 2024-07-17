@@ -1,20 +1,20 @@
-import { fetchCats } from '@/actions/cats-actions'
-import { Cats } from '@/components/cats/cats'
-import { Cat } from '@/types/cats'
-import { notFound } from 'next/navigation'
+import { fetchCats } from '@/actions/cats-actions';
+import { Cats } from '@/components/cats/cats';
+import { Cat } from '@/types/cats';
+import { notFound } from 'next/navigation';
 
 const CatsPage = async () => {
-  const cats: Cat[] = await fetchCats()
+  const cats: Cat[] = await fetchCats();
 
   if (!cats) {
-    notFound()
+    notFound();
   }
 
   return (
     <main>
       <Cats cats={cats} />
     </main>
-  )
-}
+  );
+};
 
-export default CatsPage
+export default CatsPage;
