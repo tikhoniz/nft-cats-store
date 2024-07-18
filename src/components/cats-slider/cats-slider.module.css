@@ -9,7 +9,7 @@
 }
 
 .swiperSlide {
-  width: 250px;
+  max-width: 15.5rem;
 
   & img {
     width: 100%;

@@ -27,8 +27,6 @@ main {
 }
 
 .page {
-  margin: 0 auto;
-  max-width: var(--big-desktop-width);
   padding-left: 1rem;
   padding-right: 1rem;
 }

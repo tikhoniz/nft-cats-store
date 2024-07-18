@@ -29,10 +29,8 @@ export const CatsSlider = () => {
   ];
   return (
     <Swiper
-      watchSlidesProgress={true}
       init={true}
       speed={4000}
-      centeredSlides={true}
       loop={true}
       slidesPerView={'auto'}
       autoplay={{
@@ -42,8 +40,8 @@ export const CatsSlider = () => {
       modules={[Autoplay]}
       className={cls.container}
     >
-      {images.map((it, i) => (
-        <SwiperSlide key={i} className={cls.swiperSlide}>
+      {images.map((it) => (
+        <SwiperSlide key={it} className={cls.swiperSlide}>
           <Image
             src={`/images/${it}.webp`}
             alt={''}

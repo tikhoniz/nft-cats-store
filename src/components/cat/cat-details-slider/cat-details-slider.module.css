@@ -1,9 +1,9 @@
 .container {
   position: relative;
   max-width: var(--big-desktop-width);
+  min-height: 20rem;
   margin-top: 4rem;
   padding-inline: 1.25rem;
-  overflow: visible;
   padding-bottom: 6rem;
 }
 
@@ -14,12 +14,12 @@
 .swiperSlide {
   transition: all 300ms ease-in-out;
   border-radius: 5px;
+  max-width: 20.5rem;
 
   & img {
     border-radius: 5px;
     width: 100%;
     height: 100%;
-    /* max-width: 18rem; */
     cursor: grab;
   }
 }

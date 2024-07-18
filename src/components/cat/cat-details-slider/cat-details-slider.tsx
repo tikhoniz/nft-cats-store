@@ -1,17 +1,17 @@
-'use client'
+'use client';
 
-import { classNames } from '@/lib/classNames/classNames'
-import Image from 'next/image'
-import 'swiper/css'
-import 'swiper/css/autoplay'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import { Autoplay, Navigation, Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import cls from './cat-details-slider.module.css'
+import { classNames } from '@/lib/classNames/classNames';
+import Image from 'next/image';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import cls from './cat-details-slider.module.css';
 
 interface CatDetailsSliderProps {
-  images: string[] | undefined
+  images: string[] | undefined;
 }
 
 export const CatDetailsSlider = ({ images }: CatDetailsSliderProps) => {
@@ -20,7 +20,7 @@ export const CatDetailsSlider = ({ images }: CatDetailsSliderProps) => {
       <Swiper
         centeredSlides={true}
         slidesPerView={1}
-        spaceBetween={15}
+        spaceBetween={25}
         grabCursor={true}
         freeMode={false}
         loop={true}
@@ -37,7 +37,7 @@ export const CatDetailsSlider = ({ images }: CatDetailsSliderProps) => {
           el: '.pagination-cat-details',
           clickable: true,
           renderBullet: function (index, className) {
-            return '<span class="' + className + '">' + (index + 1) + '</span>'
+            return '<span class="' + className + '">' + (index + 1) + '</span>';
           },
         }}
         navigation={{
@@ -48,30 +48,25 @@ export const CatDetailsSlider = ({ images }: CatDetailsSliderProps) => {
         breakpoints={{
           768: {
             slidesPerView: 3,
-            spaceBetween: 10,
           },
           // when window width is >= 900px
           900: {
             slidesPerView: 4,
-            spaceBetween: 15,
             centeredSlides: false,
           },
           // when window width is >= 1200px
           1200: {
             slidesPerView: 5,
-            spaceBetween: 15,
             centeredSlides: false,
           },
 
           // when window width is >= 1500px
           1500: {
             slidesPerView: 6,
-            spaceBetween: 15,
             centeredSlides: false,
           },
           1800: {
             slidesPerView: 7,
-            spaceBetween: 20,
             centeredSlides: false,
           },
         }}
@@ -101,5 +96,5 @@ export const CatDetailsSlider = ({ images }: CatDetailsSliderProps) => {
         ></div>
       </div>
     </div>
-  )
-}
+  );
+};
