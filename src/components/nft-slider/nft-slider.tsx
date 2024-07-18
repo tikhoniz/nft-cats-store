@@ -1,16 +1,16 @@
-'use client'
+'use client';
 
-import { Cat } from '@/types/cats'
-import 'swiper/css'
-import 'swiper/css/autoplay'
-import 'swiper/css/effect-coverflow'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/parallax'
-import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import cls from './home-slider.module.css'
-import { SliderItem } from './slider-item'
+import { Cat } from '@/types/cats';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/parallax';
+import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import cls from './nft-slider.module.css';
+import { SliderItem } from './slider-item';
 
 export const HomeSlider = ({ cats }: { cats: Cat[] }) => {
   return (
@@ -49,5 +49,5 @@ export const HomeSlider = ({ cats }: { cats: Cat[] }) => {
         ))}
       </Swiper>
     </div>
-  )
-}
+  );
+};

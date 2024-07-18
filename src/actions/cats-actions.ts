@@ -94,6 +94,7 @@ export async function createCat(formData: FormData) {
         `data:image/png;base64,${imageBase64}`,
         {
           folder: `nft-cats/${cat.name}`,
+          // filename_override: 'test.png',
         },
       );
 

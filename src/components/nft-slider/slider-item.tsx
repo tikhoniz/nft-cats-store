@@ -1,12 +1,12 @@
-import Link from 'next/link'
-import cls from './home-slider.module.css'
+import Link from 'next/link';
+import cls from './nft-slider.module.css';
 
 interface CatCardProps {
-  cat?: any
+  cat?: any;
 }
 
 export const SliderItem = ({ cat }: CatCardProps) => {
-  const { id, image, name, short_story, nft_link } = cat
+  const { id, image, name, short_story, nft_link } = cat;
   return (
     <>
       <Link href={`/cats/${id}`}>
@@ -32,5 +32,5 @@ export const SliderItem = ({ cat }: CatCardProps) => {
         <button className={cls.moreBtn}>BUY</button>
       </Link>
     </>
-  )
-}
+  );
+};

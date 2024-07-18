@@ -1,37 +1,37 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
-import { useRef, useState } from 'react'
-import cls from './images-picker.module.css'
+import Image from 'next/image';
+import { useRef, useState } from 'react';
+import cls from './images-picker.module.css';
 
 interface ImagesPickerProps {
-  label: string
-  name: string
+  label: string;
+  name: string;
 }
 
 export const ImagesPicker = ({ label, name }: ImagesPickerProps) => {
-  const [pickedImages, setPickedImages] = useState<string[]>([])
+  const [pickedImages, setPickedImages] = useState<string[]>([]);
 
-  const imageInputRef = useRef<HTMLInputElement | null>(null)
+  const imageInputRef = useRef<HTMLInputElement | null>(null);
 
   function handlePickClick() {
-    imageInputRef?.current!.click()
+    imageInputRef?.current!.click();
   }
 
   const handleImageChange = (e: any) => {
-    const { files } = e.target
+    const { files } = e.target;
 
     // Clone the current images array
-    const updatedImages = [...pickedImages]
+    const updatedImages = [...pickedImages];
 
     // Add the new files to the array
     for (const file of files) {
-      const imageObjectUrl = URL.createObjectURL(file)
-      updatedImages.push(imageObjectUrl)
+      const imageObjectUrl = URL.createObjectURL(file);
+      updatedImages.push(imageObjectUrl);
     }
 
-    setPickedImages(updatedImages)
-  }
+    setPickedImages(updatedImages);
+  };
 
   return (
     <div className={cls.picker}>
@@ -66,5 +66,5 @@ export const ImagesPicker = ({ label, name }: ImagesPickerProps) => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
